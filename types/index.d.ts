@@ -7,7 +7,6 @@ export type SiteConfig = {
     base: string
     author: string
   }
-  ogImage: string
 }
 
 export type ContactConfig = {

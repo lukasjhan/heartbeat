@@ -3,6 +3,7 @@ import Image from "next/image"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { heroHeader } from "@/config/contents"
+import { siteConfig } from "@/config/site"
 
 export default function HeroHeader() {
   return (
@@ -17,7 +18,7 @@ export default function HeroHeader() {
           </h2>
         </div>
         <Link
-          href="https://github.com/redpangilinan/next-shadcn-landing"
+          href={siteConfig.url.base}
           target="_blank"
           className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
         >

@@ -27,10 +27,10 @@ export default function Footer() {
           © {new Date().getFullYear()}{" "}
           <a
             target="_blank"
-            href="https://redpangilinan.live/"
+            href="https://github.com/lukasjhan"
             className="hover:underline"
           >
-            Red Pangilinan
+            Red Pangilinan, Lukas J Han
           </a>
           . All Rights Reserved.
         </span>

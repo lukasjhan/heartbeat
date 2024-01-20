@@ -8,8 +8,8 @@ import { HeroHeader, ContentSection } from "@/types/contents"
  ==================== */
 
 export const heroHeader: HeroHeader = {
-  header: `Landing pages made easy`,
-  subheader: `Easy to setup. Customizable. Quick. Responsive.`,
+  header: `HeartBeat`,
+  subheader: `Make Worldwide Status Page Right Now`,
   image: `/hero-img.webp`,
 }
 
@@ -41,13 +41,13 @@ export const features: ContentSection = {
   image: `/features-img.webp`,
   content: [
     {
-      text: `SEO Optimized`,
-      subtext: `Improved website visibility on search engines`,
+      text: `One Click Setup`,
+      subtext: `Deploy your status page in seconds`,
       icon: "fileSearch",
     },
     {
-      text: `Highly Performant`,
-      subtext: `Fast loading times and smooth performance`,
+      text: `Highly Performant and Availablity`,
+      subtext: `Support for multiple regions and providers`,
       icon: "barChart",
     },
     {

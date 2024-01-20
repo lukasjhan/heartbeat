@@ -5,30 +5,19 @@ import { SiteConfig, ContactConfig } from "@/types"
 -- Fill the details about your website
  ==================== */
 
-const baseUrl = "https://nextlanding.rdev.pro"
+const baseUrl = "https://github.com/lukasjhan"
 
 export const siteConfig: SiteConfig = {
-  name: "Next Landing",
-  author: "redpangilinan",
-  description:
-    "Easy to setup, customizable, quick, and responsive landing page starter built with Next.js and shadcn/ui.",
-  keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Radix UI",
-    "shadcn/ui",
-    "Landing Page",
-    "Template",
-    "Starter",
-  ],
+  name: "HeartBeat",
+  author: "lukasjhan",
+  description: "One click setup status page for your service.",
+  keywords: ["Next.js", "React", "Tailwind CSS", "Radix UI", "shadcn/ui"],
   url: {
     base: baseUrl,
-    author: "https://redpangilinan.live",
+    author: "https://github.com/lukasjhan",
   },
-  ogImage: `${baseUrl}/og.jpg`,
 }
 
 export const contactConfig: ContactConfig = {
-  email: "janreynald.pangilinan@gmail.com",
+  email: "lukas.j.han@gmail.com",
 }
