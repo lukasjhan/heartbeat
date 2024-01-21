@@ -41,13 +41,13 @@
     --foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted-foreground: 217 35.2% 38.1%;
 
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
     --card: 222.2 84% 4.9%;
-    --card-foreground: #e33e33;
+    --card-foreground: rgb(2, 8, 23);
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
