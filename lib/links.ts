@@ -1,11 +1,15 @@
 export const navLinks = [
   {
+    route: "Dashboard",
+    path: "/contact",
+  },
+  {
     route: "Features",
     path: "/#features",
   },
   {
     route: "Demo",
-    path: "/demo",
+    path: "/contact",
   },
   {
     route: "Pricing",

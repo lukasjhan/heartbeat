@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { ModeToggle } from "@/components/mode-toggle"
-import { siteConfig } from "@/config/site"
-import { navLinks } from "@/lib/links"
-import { settings } from "@/config/settings"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { ModeToggle } from "@/components/mode-toggle";
+import { siteConfig } from "@/config/site";
+import { navLinks } from "@/lib/links";
+import { settings } from "@/config/settings";
 
 export default function Navbar() {
-  const [navbar, setNavbar] = useState(false)
+  const [navbar, setNavbar] = useState(false);
 
   const handleClick = async () => {
-    setNavbar(false)
-  }
+    setNavbar(false);
+  };
 
   useEffect(() => {
     if (navbar) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
-  }, [navbar])
+  }, [navbar]);
 
   return (
     <header className="select-none">
@@ -77,7 +77,7 @@ export default function Navbar() {
             className={`absolute left-0 right-0 z-10 m-auto justify-self-center rounded-md border bg-background p-4 md:static md:mt-0 md:block md:border-none md:p-0 ${
               navbar ? "block" : "hidden"
             }`}
-            style={{ width: "100%", maxWidth: "20rem" }}
+            style={{ width: "100%" }}
           >
             <ul className="flex flex-col items-center space-y-4 text-primary opacity-60 md:flex-row md:space-x-6 md:space-y-0">
               {navLinks.map((link) => (
@@ -101,5 +101,5 @@ export default function Navbar() {
         )}
       </nav>
     </header>
-  )
+  );
 }
