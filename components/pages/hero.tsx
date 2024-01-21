@@ -20,7 +20,6 @@ export default function HeroHeader() {
         <div className="flex gap-4">
           <Link
             href={"/dashboard"}
-            target="_blank"
             className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
           >
             Get started
