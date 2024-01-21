@@ -5,6 +5,39 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import WorldMap, { CountryContext } from "react-svg-worldmap";
+
+const data = [
+  { country: "us", value: 28 }, // united states
+  { country: "br", value: 815 }, // brazil
+  { country: "za", value: 1426 }, // south africa
+  { country: "jp", value: 153 }, // japan
+  { country: "sg", value: 111 }, // signapore
+  { country: "in", value: 211 }, // signapore
+  { country: "gb", value: 56 }, // united kingdom
+  { country: "de", value: 72 }, // germany
+  { country: "eg", value: 919 }, // germany
+];
+
+const stylingFunction = ({
+  countryValue,
+  minValue,
+  maxValue,
+  countryName,
+  color,
+}: CountryContext) => {
+  const calculatedValue = typeof countryValue === "string" ? 0 : countryValue;
+  const opacityLevel =
+    calculatedValue !== undefined ? 0.1 + (1.5 * calculatedValue) / 2000 : 0;
+  return {
+    fill: countryName === "us" ? "blue" : color,
+    fillOpacity: opacityLevel,
+    stroke: "black",
+    strokeWidth: 1,
+    strokeOpacity: 0.2,
+    cursor: "pointer",
+  };
+};
 
 const worldServers = [
   {
@@ -103,7 +136,18 @@ export default function Page({ params }: { params: { project: string } }) {
           );
         })}
       </div>
-      <div>History</div>
+      <div className="text-3xl font-bold">History</div>
+      <div className="flex flex-row gap-8 border-4 border-[#ea6b62] p-4">
+        <WorldMap
+          color="red"
+          title="[World Map] Region Latency"
+          valuePrefix="latency"
+          valueSuffix="ms"
+          size="xl"
+          data={data}
+          styleFunction={stylingFunction}
+        />
+      </div>
     </main>
   );
 }
