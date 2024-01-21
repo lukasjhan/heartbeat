@@ -1,8 +1,7 @@
-import Image from "next/image"
-import HeadingText from "@/components/heading-text"
-import { featureCards } from "@/config/contents"
-import { Card, CardDescription, CardTitle } from "@/components/ui/card"
-import { Icons } from "@/components/icons"
+import HeadingText from "@/components/heading-text";
+import { featureCards } from "@/config/contents";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Icons } from "@/components/icons";
 
 export default function FeatureCards() {
   return (
@@ -15,7 +14,7 @@ export default function FeatureCards() {
         ) : null}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {featureCards.content.map((cards) => {
-            const Icon = Icons[cards.icon || "blank"]
+            const Icon = Icons[cards.icon || "blank"];
 
             return (
               <Card
@@ -30,10 +29,10 @@ export default function FeatureCards() {
                   <CardDescription>{cards.subtext}</CardDescription>
                 </div>
               </Card>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
