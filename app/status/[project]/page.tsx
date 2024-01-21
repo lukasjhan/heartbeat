@@ -6,6 +6,8 @@ import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import WorldMap, { CountryContext } from "react-svg-worldmap";
+import CalendarHeatmap from "react-calendar-heatmap";
+import "react-calendar-heatmap/dist/styles.css";
 
 const data = [
   { country: "us", value: 28 }, // united states
@@ -94,6 +96,12 @@ const featureCards = [
   ...worldServers,
 ];
 
+const heatmap = [
+  { date: "2024-01-01", count: 580 },
+  { date: "2023-11-29", count: 1790 },
+  { date: "2024-12-03", count: 370 },
+];
+
 export default function Page({ params }: { params: { project: string } }) {
   if (params.project !== "heartbeat") {
     return (
@@ -108,6 +116,7 @@ export default function Page({ params }: { params: { project: string } }) {
     );
   }
 
+  const today = new Date();
   const Icon = Icons["check"];
 
   return (
@@ -137,16 +146,55 @@ export default function Page({ params }: { params: { project: string } }) {
         })}
       </div>
       <div className="text-3xl font-bold">History</div>
-      <div className="flex flex-row gap-8 border-4 border-[#ea6b62] p-4">
-        <WorldMap
-          color="red"
-          title="[World Map] Region Latency"
-          valuePrefix="latency"
-          valueSuffix="ms"
-          size="xl"
-          data={data}
-          styleFunction={stylingFunction}
-        />
+      <div className="flex flex-row gap-8">
+        <div
+          className="p-4"
+          style={{
+            position: "relative",
+            width: "600px",
+          }}
+        >
+          <CalendarHeatmap
+            startDate={shiftDate(today, -100)}
+            endDate={today}
+            values={heatmap}
+            classForValue={(value) => {
+              if (!value) {
+                return "color-scale-1";
+              }
+
+              let level = 1;
+              if (value.count > 200) {
+                level = 2;
+              } else if (value.count > 500) {
+                level = 3;
+              } else if (value.count > 1000) {
+                level = 4;
+              }
+
+              return `color-scale-${level}`;
+            }}
+            titleForValue={(value) => {
+              if (!value) {
+                return "No data";
+              }
+
+              return `Date is ${value.date}`;
+            }}
+            showWeekdayLabels={true}
+          />
+        </div>
+        <div className="border-4 border-[#ea6b62] p-4">
+          <WorldMap
+            color="red"
+            title="[World Map] Region Latency"
+            valuePrefix="latency"
+            valueSuffix="ms"
+            size="xl"
+            data={data}
+            styleFunction={stylingFunction}
+          />
+        </div>
       </div>
     </main>
   );
@@ -154,4 +202,10 @@ export default function Page({ params }: { params: { project: string } }) {
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function shiftDate(date: Date, numDays: number) {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + numDays);
+  return newDate;
 }
