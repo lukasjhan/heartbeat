@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { contactConfig } from "@/config/site"
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { contactConfig } from "@/config/site";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,9 +14,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { sendEmailAndMessageToSlack } from "@/api/slack";
 
 const formSchema = z.object({
   email: z.string().min(1, {
@@ -25,7 +26,7 @@ const formSchema = z.object({
   msg: z.string().min(1, {
     message: "Message is required",
   }),
-})
+});
 
 export default function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -34,11 +35,11 @@ export default function ContactForm() {
       email: "",
       msg: "",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    window.location.href = `mailto:${contactConfig.email}?email=${values.email}&body=${values.msg}`
-    form.reset()
+    sendEmailAndMessageToSlack(values.email, values.msg);
+    form.reset();
   }
 
   return (
@@ -82,5 +83,5 @@ export default function ContactForm() {
         </Button>
       </form>
     </Form>
-  )
+  );
 }
