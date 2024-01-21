@@ -17,19 +17,30 @@ export default function HeroHeader() {
             {heroHeader.subheader}
           </h2>
         </div>
-        <Link
-          href={siteConfig.url.base}
-          target="_blank"
-          className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
-        >
-          Get started
-        </Link>
+        <div className="flex gap-4">
+          <Link
+            href={siteConfig.url.base}
+            target="_blank"
+            className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
+          >
+            Get started
+          </Link>
+          <Link
+            href={siteConfig.url.base}
+            target="_blank"
+            className={`w-[10rem] ${cn(
+              buttonVariants({ variant: "outline", size: "lg" })
+            )}`}
+          >
+            Demo
+          </Link>
+        </div>
       </div>
       {heroHeader.image !== "" ? (
         <div className="flex flex-1 justify-center lg:justify-end">
           <Image
             src={heroHeader.image}
-            width={500}
+            width={600}
             height={500}
             alt="Header image"
           />

@@ -13,6 +13,6 @@ export const navLinks = [
   },
   {
     route: "Github",
-    path: "https://github.com/redpangilinan/next-shadcn-landing",
+    path: "https://github.com/lukasjhan/heartbeat",
   },
 ]

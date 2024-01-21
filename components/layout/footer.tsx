@@ -27,12 +27,11 @@ export default function Footer() {
           © {new Date().getFullYear()}{" "}
           <a
             target="_blank"
-            href="https://github.com/lukasjhan"
+            href="https://github.com/lukasjhan/heartbeat"
             className="hover:underline"
           >
-            Red Pangilinan, Lukas J Han
+            HeartBeat Project Repository
           </a>
-          . All Rights Reserved.
         </span>
       </div>
     </footer>
