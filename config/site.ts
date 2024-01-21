@@ -5,7 +5,7 @@ import { SiteConfig, ContactConfig } from "@/types"
 -- Fill the details about your website
  ==================== */
 
-const baseUrl = "https://github.com/lukasjhan"
+const baseUrl = "https://heartbeat-vert.vercel.app/"
 
 export const siteConfig: SiteConfig = {
   name: "HeartBeat",
