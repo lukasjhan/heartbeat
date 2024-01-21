@@ -1,11 +1,15 @@
 export const navLinks = [
   {
-    route: "Home",
-    path: "/",
-  },
-  {
     route: "Features",
     path: "/#features",
+  },
+  {
+    route: "Demo",
+    path: "/demo",
+  },
+  {
+    route: "Pricing",
+    path: "/pricing",
   },
   {
     route: "Contact",
@@ -15,4 +19,4 @@ export const navLinks = [
     route: "Github",
     path: "https://github.com/lukasjhan/heartbeat",
   },
-]
+];
