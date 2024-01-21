@@ -15,7 +15,7 @@ export const heroHeader: HeroHeader = {
 
 export const featureCards: ContentSection = {
   header: `Features`,
-  subheader: `What makes Next Landing possible`,
+  subheader: `HeartBeat is a status page that monitors your services and displays the results in a beautiful dashboard.`,
   content: [
     {
       text: `One Click Setup`,

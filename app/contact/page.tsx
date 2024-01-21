@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Contact() {
   return (
-    <main className="container flex flex-col items-center py-8">
+    <main className="container flex flex-col items-center py-8" id="contact">
       <div className="flex flex-col items-center space-y-2 text-center">
         <HeadingText subtext="Send a message through email">
           Contact
