@@ -89,3 +89,6 @@
 .react-calendar-heatmap .color-scale-4 {
   fill: #e33e33;
 }
+.react-calendar-heatmap .color-scale-failure {
+  fill: red;
+}

@@ -145,15 +145,16 @@ export default function Page({ params }: { params: { project: string } }) {
           );
         })}
       </div>
-      <div className="text-3xl font-bold">History</div>
+      <div className="text-4xl font-bold">History</div>
       <div className="flex flex-row gap-8">
         <div
-          className="p-4"
+          className="flex flex-col gap-16 p-4"
           style={{
             position: "relative",
             width: "600px",
           }}
         >
+          <div className="text-2xl font-bold">Latency/Failure HeatMap</div>
           <CalendarHeatmap
             startDate={shiftDate(today, -100)}
             endDate={today}
@@ -184,10 +185,10 @@ export default function Page({ params }: { params: { project: string } }) {
             showWeekdayLabels={true}
           />
         </div>
-        <div className="border-4 border-[#ea6b62] p-4">
+        <div className="p-4">
+          <div className="text-2xl font-bold">Region Latency World Map</div>
           <WorldMap
             color="red"
-            title="[World Map] Region Latency"
             valuePrefix="latency"
             valueSuffix="ms"
             size="xl"
