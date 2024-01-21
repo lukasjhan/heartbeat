@@ -19,8 +19,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 const formSchema = z.object({
-  subject: z.string().min(1, {
-    message: "Subject is required",
+  email: z.string().min(1, {
+    message: "Email is required",
   }),
   msg: z.string().min(1, {
     message: "Message is required",
@@ -31,13 +31,13 @@ export default function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      subject: "",
+      email: "",
       msg: "",
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    window.location.href = `mailto:${contactConfig.email}?subject=${values.subject}&body=${values.msg}`
+    window.location.href = `mailto:${contactConfig.email}?email=${values.email}&body=${values.msg}`
     form.reset()
   }
 
@@ -49,12 +49,12 @@ export default function ContactForm() {
       >
         <FormField
           control={form.control}
-          name="subject"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the subject" {...field} />
+                <Input placeholder="Enter the Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -70,7 +70,7 @@ export default function ContactForm() {
                 <Textarea placeholder="Enter your message" {...field} />
               </FormControl>
               <FormDescription>
-                Your message will be sent through email
+                Your message will be sent through slack
               </FormDescription>
               <FormMessage />
             </FormItem>
