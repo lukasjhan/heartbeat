@@ -9,7 +9,7 @@ export const navLinks = [
   },
   {
     route: "Demo",
-    path: "/contact",
+    path: "/status/heartbeat",
   },
   {
     route: "Pricing",
