@@ -1,4 +1,5 @@
 import axios from "axios";
+import querystring from "querystring";
 
 const webhookUrl = process.env.NEXT_PUBLIC_SLACK || "";
 
@@ -14,9 +15,17 @@ export async function sendEmailAndMessageToSlack(
   }
 
   try {
-    await axios.post(webhookUrl, {
+    const payload = {
       text: formattedMessage,
       mrkdwn: true, // Enable Markdown formatting
+    };
+    const encodedPayload = querystring.stringify({
+      payload: JSON.stringify(payload),
+    });
+    await axios.post(webhookUrl, encodedPayload, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     });
     console.log("Email and message sent to Slack successfully");
   } catch (error) {
