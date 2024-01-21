@@ -1,38 +1,24 @@
-# Next Landing
+# HeartBeat
 
-Easy to setup, customizable, quick, and responsive landing page starter built with [Next.js](https://nextjs.org) and [shadcn/ui](https://ui.shadcn.com).
+A simple status page for your services.
 
-- [Live Preview](https://nextlanding.rdev.pro)
+- [Live Preview](heartbeat-vert.vercel.app)
+
+## Features
+
+- One click deployment for your status page
+- Easy to use
+- Check latency of your services from across the globe
+- Manage team members
+- Add multiple services
 
 ## Preview
 
-![Next Landing Preview](public/og.jpg)
+![Status Preview](public/og.png)
 
 ## Getting Started
 
 Follow the instructions based on the package manager you use (npm/pnpm)
-
-### Start by setting up a new project
-
-```bash
-npx degit redpangilinan/next-shadcn-landing my-app
-```
-
-```bash
-pnpm dlx degit redpangilinan/next-shadcn-landing my-app
-```
-
-### Change package.json name
-
-```json
-"name": "next-shadcn-landing",
-```
-
-to
-
-```json
-"name": "my-app",
-```
 
 ### Install dependencies
 
@@ -53,23 +39,6 @@ npm run dev
 ```bash
 pnpm run dev
 ```
-
-### That's it
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-Modify the content and website configurations in the `/config` folder.
-
-Modify the layout and routes in the `/app` folder.
-
-Change navigation links by modifying `lib/links.ts` file.
-
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## License
 

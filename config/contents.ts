@@ -1,4 +1,4 @@
-import { HeroHeader, ContentSection } from "@/types/contents"
+import { HeroHeader, ContentSection } from "@/types/contents";
 
 /* ====================
 [> CUSTOMIZING CONTENT <]
@@ -11,7 +11,7 @@ export const heroHeader: HeroHeader = {
   header: `HeartBeat`,
   subheader: `Make Worldwide Status Page in a minute`,
   image: `/hero-img.png`,
-}
+};
 
 export const featureCards: ContentSection = {
   header: `Features`,
@@ -33,12 +33,12 @@ export const featureCards: ContentSection = {
       icon: "settings",
     },
   ],
-}
+};
 
 export const features: ContentSection = {
   header: `Status Page`,
   subheader: `Conprehensive status page for your services`,
-  image: `/features-img.webp`,
+  image: `/og.png`,
   content: [
     {
       text: `Server Health`,
@@ -56,4 +56,4 @@ export const features: ContentSection = {
       icon: "fire",
     },
   ],
-}
+};
