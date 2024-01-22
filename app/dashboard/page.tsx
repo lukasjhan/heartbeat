@@ -1,8 +1,9 @@
 "use client";
 
-import { Icons } from "@/components/icons";
 import axios from "axios";
 import { useState } from "react";
+import HeadingText from "@/components/heading-text";
+import ProjectCreateForm from "@/components/pages/create-project-form";
 
 const Spinner = () => {
   return (
@@ -163,7 +164,15 @@ function useAuth() {
   };
 }
 
+function getNameByEmail(email: string) {
+  const name = email.split("@")[0];
+  return name;
+}
+
 export default function Dashboard() {
+  const [requested, setRequested] = useState<boolean>(false);
+  const formSent = () => setRequested(true);
+
   const { loading, user, getAccessToken } = useAuth();
 
   if (loading || !user) {
@@ -182,7 +191,26 @@ export default function Dashboard() {
       className="container flex flex-col items-center gap-12 py-8"
       id="contact"
     >
-      {`Hello ${user.email}!`}
+      <div
+        style={{
+          width: "100%",
+        }}
+        className="flex flex-col space-y-2"
+      >
+        <HeadingText subtext="Initialize your first project">{`Welcome! ${getNameByEmail(
+          user.email
+        )}`}</HeadingText>
+      </div>
+      {!requested ? (
+        <ProjectCreateForm email={user.email} callback={formSent} />
+      ) : (
+        <div
+          className="p-16 text-xl font-semibold"
+          style={{
+            whiteSpace: "pre",
+          }}
+        >{`Thank you!\n\nWe are currently operating our service in beta. \nYour project request has been sent, and we will notify you once it has been approved.`}</div>
+      )}
     </main>
   );
 }
