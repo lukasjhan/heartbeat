@@ -146,7 +146,7 @@ export default function Page({ params }: { params: { project: string } }) {
         })}
       </div>
       <div className="text-4xl font-bold">History</div>
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-row flex-wrap gap-8 ">
         <div
           className="flex flex-col gap-16 p-4"
           style={{
@@ -182,7 +182,6 @@ export default function Page({ params }: { params: { project: string } }) {
 
               return `Date is ${value.date}`;
             }}
-            showWeekdayLabels={true}
           />
         </div>
         <div className="p-4">
