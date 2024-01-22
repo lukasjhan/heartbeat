@@ -40,6 +40,49 @@ function getCode() {
   return code;
 }
 
+async function refresh(accessToken: string, refreshToken: string) {
+  const { data } = await axios.post(
+    `https://api.furo.one/sessions/token/refresh`,
+    {
+      accessToken,
+    },
+    {
+      headers: { Authorization: `Bearer ${refreshToken}` },
+    }
+  );
+
+  const { access_token, refresh_token } = data;
+  localStorage.setItem(`access-token`, access_token);
+  localStorage.setItem(`refresh-refresh`, refresh_token);
+  return { access_token };
+}
+
+async function getAccessToken() {
+  const accessToken = localStorage.getItem("access-token");
+  const refreshToken = localStorage.getItem("refresh-token");
+
+  if (accessToken && refreshToken) {
+    const payloadBase64 = accessToken.split(".")[1];
+    const decodedJson = Buffer.from(payloadBase64, "base64").toString();
+    const decoded = JSON.parse(decodedJson);
+    const exp = decoded.exp;
+    if (!exp) return accessToken;
+    const expired = Date.now() >= exp * 1000;
+    if (!expired) return accessToken;
+    else {
+      const { access_token: token } = await refresh(accessToken, refreshToken);
+      return token;
+    }
+  }
+
+  return null;
+}
+
+function loginWithRedirect() {
+  window.location.href =
+    "https://auth.furo.one/login/a5111263d5b4f90f9a9e1ed0ece3b00a";
+}
+
 function useAuth() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
@@ -60,11 +103,14 @@ function useAuth() {
   if (!user) {
     // if token exists, return true
     if (accessToken && refreshToken) {
-      axios
-        .get("https://api.furo.one/users/me", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      getAccessToken()
+        .then((token) => {
+          if (!token) throw new Error("no access token");
+          return axios.get("https://api.furo.one/users/me", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
         })
         .then((res) => {
           setUser(res.data);
@@ -75,6 +121,7 @@ function useAuth() {
           //remove localstorage
           localStorage.removeItem("access-token");
           localStorage.removeItem("refresh-token");
+          loginWithRedirect();
         });
       // if query code= exist, use it
     } else if (code) {
@@ -102,16 +149,11 @@ function useAuth() {
           console.log(err);
           localStorage.removeItem("access-token");
           localStorage.removeItem("refresh-token");
+          loginWithRedirect();
         });
     } else {
-      // goto login page
-      window.location.href =
-        "https://auth.furo.one/login/a5111263d5b4f90f9a9e1ed0ece3b00a";
+      loginWithRedirect();
     }
-  }
-
-  function getAccessToken() {
-    return accessToken;
   }
 
   return {
